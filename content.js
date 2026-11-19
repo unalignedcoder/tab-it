@@ -12,6 +12,18 @@
     }
   });
 
+  // Report the browser/system theme so the toolbar icon can match it.
+  // Messages are sent only when the theme differs from the stored one.
+  const darkQuery = matchMedia('(prefers-color-scheme: dark)');
+  function reportTheme() {
+    const dark = darkQuery.matches;
+    chrome.storage.local.get('darkTheme', ({ darkTheme }) => {
+      if (darkTheme !== dark) chrome.runtime.sendMessage({ type: 'theme', dark }).catch(() => {});
+    });
+  }
+  reportTheme();
+  darkQuery.addEventListener('change', reportTheme);
+
   // Common second-level public suffixes, so "bbc.co.uk" is treated as one domain.
   const TWO_PART_SUFFIXES = new Set([
     'co.uk', 'org.uk', 'ac.uk', 'gov.uk', 'me.uk', 'ltd.uk', 'plc.uk',

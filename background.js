@@ -160,7 +160,33 @@ chrome.webNavigation.onCommitted.addListener(async (details) => {
 // Messages from content script (#1)
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Toolbar icon: the blue icon on light themes, the white one on dark themes.
+// A service worker can't read prefers-color-scheme, so pages report it
+// (content.js and the options page) and only when it differs from the stored value.
+// ---------------------------------------------------------------------------
+
+const iconSet = (prefix) =>
+  Object.fromEntries([16, 32, 48, 128].map((s) => [s, `icons/${prefix}${s}.png`]));
+
+async function applyTheme(dark) {
+  await chrome.storage.local.set({ darkTheme: dark });
+  await chrome.action.setIcon({ path: iconSet(dark ? 'icon-white' : 'icon') });
+}
+
+// The icon set with setIcon is lost when the browser restarts: reapply the last known theme.
+chrome.runtime.onStartup.addListener(async () => {
+  const { darkTheme } = await chrome.storage.local.get('darkTheme');
+  if (darkTheme) await applyTheme(true);
+});
+
+chrome.action.onClicked.addListener(() => chrome.runtime.openOptionsPage());
+
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
+  if (msg?.type === 'theme') {
+    applyTheme(!!msg.dark).catch(() => {});
+    return;
+  }
   if (msg?.type !== 'openInNewTab' || !sender.tab) return;
   getSettings()
     .then((settings) =>

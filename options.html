@@ -23,6 +23,9 @@
     body > small { margin: 4px 0 0 24px; }
     hr { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
     #status { color: var(--ok); min-height: 1.2em; margin-top: 8px; font-size: 12px; }
+    .donate { text-align: center; }
+    .donate p { color: var(--muted); font-size: 12px; margin: 0 0 10px; }
+    .donate img { display: inline-block; vertical-align: middle; }
   </style>
 </head>
 <body>
@@ -51,6 +54,14 @@
     <span>Debug logging <small>(service worker console)</small></span></label>
 
   <div id="status"></div>
+
+  <hr>
+  <div class="donate">
+    <p>Tab it is free. If you find it useful, you can support its development by buying me a coffee. Thank you!</p>
+    <!-- the button image is kept in the extension: no request to buymeacoffee.com until it is clicked -->
+    <a href="https://buymeacoffee.com/unalignedcoder" target="_blank" rel="noopener">
+      <img src="icons/buymeacoffee.png" alt="Buy me a coffee" width="145" height="41"></a>
+  </div>
   <script src="options.js"></script>
 </body>
 </html>

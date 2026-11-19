@@ -22,3 +22,9 @@ chrome.storage.sync.get(DEFAULTS, (settings) => {
     });
   }
 });
+
+// Keep the toolbar icon in line with the browser/system theme.
+const darkQuery = matchMedia('(prefers-color-scheme: dark)');
+const reportTheme = () => chrome.runtime.sendMessage({ type: 'theme', dark: darkQuery.matches });
+reportTheme();
+darkQuery.addEventListener('change', reportTheme);
