@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="color-scheme" content="light dark">
+  <title>Tab it – Options</title>
+  <style>
+    :root { color-scheme: light dark;
+            --bg: #fff; --fg: #202124; --muted: #5f6368; --border: #dadce0; --ok: #188038; --accent: #1a73e8; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #292a2d; --fg: #e8eaed; --muted: #9aa0a6; --border: #3c4043; --ok: #81c995; --accent: #8ab4f8; }
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: var(--bg); color: var(--fg); }
+    input[type="checkbox"] { accent-color: var(--accent); }
+    html, body { margin: 0; }
+    body { font: 14px system-ui, sans-serif; line-height: 1.4; padding: 20px 28px 20px 24px;
+           width: 100%; min-width: 360px; max-width: 520px; overflow-wrap: anywhere; }
+    label { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0; cursor: pointer; }
+    label span { flex: 1; min-width: 0; }
+    input { margin: 2px 0 0; flex-shrink: 0; }
+    small { color: var(--muted); display: block; }
+    body > small { margin: 4px 0 0 24px; }
+    hr { border: none; border-top: 1px solid var(--border); margin: 14px 0; }
+    #status { color: var(--ok); min-height: 1.2em; margin-top: 8px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <label><input type="checkbox" id="externalLinks">
+    <span>Open links to a different domain in a new tab</span></label>
+
+  <label><input type="checkbox" id="addressBar">
+    <span>Open URLs entered in the address bar (incl. "Paste and go") in a new tab</span></label>
+
+  <label><input type="checkbox" id="bookmarks">
+    <span>Open bookmarks in a new tab</span></label>
+
+  <label><input type="checkbox" id="history">
+    <span>Open History page items in a new tab</span></label>
+
+  <small>The last three options can't be intercepted before Chrome navigates, so the
+    current tab briefly starts loading the page, then goes back while the page opens
+    in a new tab. Navigations from a blank New Tab page stay in place.</small>
+
+  <hr>
+  <label><input type="checkbox" id="openInBackground">
+    <span>Open new tabs in the background <small>(don't switch to them)</small></span></label>
+
+  <hr>
+  <label><input type="checkbox" id="debug">
+    <span>Debug logging <small>(service worker console)</small></span></label>
+
+  <div id="status"></div>
+  <script src="options.js"></script>
+</body>
+</html>
