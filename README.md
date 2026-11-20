@@ -62,7 +62,7 @@ Tab it has a single purpose: open the kinds of navigation you choose in a new ta
 | `tabs` | Reads tab URLs to know which page a tab was on before a navigation, for example the `chrome://history` page or an empty New Tab page. Host permissions can't give access to `chrome://` URLs. |
 | Content script on `http://*/*`, `https://*/*` | Checks link clicks on web pages, so links to a different domain open in a new tab before the page changes. |
 
-There are no host permissions besides the content script, no remote code, no analytics, and no data leaves the browser. Options are kept in Chrome's synced storage.
+There are no host permissions besides the content script, no remote code, no analytics, and no data leaves the browser. Options are kept in Chrome's synced storage. See the [privacy policy](privacy.md).
 
 ## Project layout
 
