@@ -51,6 +51,19 @@ Other limitations:
 - Ctrl-, Shift- and middle-clicks are left to the browser's normal handling.
 - If address-bar navigations are sometimes missed, Chrome may have prerendered the page (*Settings → Performance → Preload pages*). Turn on **Debug logging** in the options and check the service worker console to see which transition types are reported.
 
+## Permissions
+
+Tab it has a single purpose: open the kinds of navigation you choose in a new tab instead of the current one. It requests only what that needs:
+
+| Permission | Why |
+|---|---|
+| `storage` | Saves the options, remembers the previous URL of each tab for the session, and remembers the light/dark theme for the toolbar icon. |
+| `webNavigation` | Detects address-bar, bookmark and history navigations (`webNavigation.onCommitted` with its transition type), so they can be moved to a new tab. |
+| `tabs` | Reads tab URLs to know which page a tab was on before a navigation, for example the `chrome://history` page or an empty New Tab page. Host permissions can't give access to `chrome://` URLs. |
+| Content script on `http://*/*`, `https://*/*` | Checks link clicks on web pages, so links to a different domain open in a new tab before the page changes. |
+
+There are no host permissions besides the content script, no remote code, no analytics, and no data leaves the browser. Options are kept in Chrome's synced storage.
+
 ## Project layout
 
 ```

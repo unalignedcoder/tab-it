@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Tab it",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Open external links, address-bar URLs, bookmarks and history items in a new tab.",
   "browser_specific_settings": {
     "gecko": {
@@ -28,16 +28,14 @@
     "tabs",
     "webNavigation"
   ],
-  "host_permissions": [
-    "<all_urls>"
-  ],
   "background": {
     "service_worker": "background.js"
   },
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "http://*/*",
+        "https://*/*"
       ],
       "js": [
         "content.js"
