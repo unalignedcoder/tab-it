@@ -21,7 +21,9 @@ Each one is a checkbox on the options page. New tabs can also be opened in the b
 
 # Download and Install
 
-Download the latest version from the [Releases](https://github.com/unalignedcoder/tabit/releases) page, or clone this repository, then:
+Download and install the latest version from The Chrome or [Edge](https://microsoftedge.microsoft.com/addons/detail/dafmiicjoamppjffiegmjdedbdfhepee) stores.
+
+Otherwise from the [Releases](https://github.com/unalignedcoder/tabit/releases) page, then:
 
 1. Open `chrome://extensions` (`edge://extensions`, `brave://extensions`…) and turn on **Developer mode**.
 2. Click **Load unpacked** and select the extension folder.
