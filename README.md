@@ -74,6 +74,23 @@ options.html/js  options page
 icons/           extension icons (blue for light themes, white for dark ones)
 ```
 
+## Changelog
+
+### 1.0.2
+- Options page: wider (560px) and no horizontal scrolling; text and images shrink to fit narrow dialogs
+- Added a [privacy policy](privacy.md): the extension collects and sends no data
+
+### 1.0.1
+- Removed the unneeded `<all_urls>` host permission
+- The content script runs only on http/https pages
+- README lists every permission and why it is needed
+
+### 1.0.0
+- First release: opens links to other domains, address-bar URLs and searches, bookmarks and history items in a new tab (each can be turned on or off)
+- Option to open new tabs in the background
+- Options page and toolbar icon follow the light/dark theme
+- Buy me a coffee button
+
 ## Support
 
 Tab it is free. If you find it useful, you can support its development:
