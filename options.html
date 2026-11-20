@@ -11,11 +11,15 @@
       :root { --bg: #292a2d; --fg: #e8eaed; --muted: #9aa0a6; --border: #3c4043; --ok: #81c995; --accent: #8ab4f8; }
     }
     *, *::before, *::after { box-sizing: border-box; }
-    html { background: var(--bg); color: var(--fg); }
+    /* No horizontal scrolling: the vertical scrollbar gets its own space,
+       and nothing on the page is wider than the dialog. */
+    html { background: var(--bg); color: var(--fg); overflow-x: hidden; scrollbar-gutter: stable; }
     input[type="checkbox"] { accent-color: var(--accent); }
     html, body { margin: 0; }
-    body { font: 14px system-ui, sans-serif; line-height: 1.4; padding: 20px 28px 20px 24px;
-           width: 100%; min-width: 360px; max-width: 520px; overflow-wrap: anywhere; }
+    /* Chrome sizes the options dialog to the page: ask for 560px, shrink below it if the dialog is narrower. */
+    body { font: 14px system-ui, sans-serif; line-height: 1.4; padding: 20px 24px;
+           width: 560px; max-width: 100%; overflow-wrap: anywhere; }
+    img { max-width: 100%; height: auto; }
     label { display: flex; align-items: flex-start; gap: 8px; margin: 10px 0; cursor: pointer; }
     label span { flex: 1; min-width: 0; }
     input { margin: 2px 0 0; flex-shrink: 0; }
