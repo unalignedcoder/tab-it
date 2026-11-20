@@ -7,6 +7,9 @@
 
 Keep the page you are on, and open new destinations in a new tab.
 
+<img width="289" height="336" alt="2026-11-20 18_11_08-Technocracy" src="https://github.com/user-attachments/assets/669bd70e-6275-4f5c-9522-f5570191c8f7" />
+
+
 Tab it is a small Chrome extension (Manifest V3) that makes these navigations open in a new tab instead of replacing the current page:
 
 1. Links that point to a different domain (subdomains count as the same domain)
